@@ -1,0 +1,10 @@
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+server-->browser: None {message: "note created"}
+
+
+note over browser:
+When post request is made 
+the server responds with {"message":"note created"}
+and page is updated imediately without reloading
+end note
+
