@@ -97,15 +97,14 @@ const App = () => {
         phonebookService.update(id, number, name).then(person => {
           setPersons(persons.map(psn => psn.id !== person.id ? psn : person))
           handleNotification('success', `${name} number updated to ${number}`)
-        }).catch(err => handleNotification('error', `Information of ${name} has already been removed from server refresh page`))
+        }).catch(err => handleNotification('error', err.response.data.error))
       }
-
       return
     }
     phonebookService.create(name, number).then(person => {
       setPersons(persons.concat(person))
       handleNotification('success', `Added ${name}`)
-    }).catch(err => handleNotification('error', 'an error occured'))
+    }).catch(err => handleNotification('error', err.response.data.error))
 
     setNewName("")
     setNewNumber("")
